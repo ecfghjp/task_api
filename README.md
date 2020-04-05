@@ -7,10 +7,10 @@ To test the api , open project in visual studio code
 
 Run following commands in Visual studio code console:
 pip3 install flask
-Pip3 install 
+Pip3 install MongoClient
 
 # Hit Run on console to run app.py
 # The server will start on port 5000
 
-#Test connectivity
+To Test connectivity
 http://localhost:5000/api/tasks/ from browser, you should get JSON back
