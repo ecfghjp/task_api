@@ -18,10 +18,14 @@ http://localhost:5000/api/tasks/ from browser, you should get JSON back
 
 # Future enhancements #
 
+**exception handling**
+
 **Logging**
 
 **Unit Test and Integration test**
 
 **Folder structure and init.py file**
+
+
 
  
