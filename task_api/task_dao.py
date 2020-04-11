@@ -27,8 +27,6 @@ def retrieve_all_tasks():
     try:
         task = db.task
         result = task.find()
-    except ConnectionRefusedError as connection_refused_rror:
-        raise connection_refused_rror
     except Exception as e:
         raise e
     return result

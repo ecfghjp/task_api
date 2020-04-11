@@ -11,7 +11,7 @@ app=Flask(__name__)
 @app.route('/api/tasks/',methods=["GET"])
 def get_all_tasks():
     try:
-        tasks = mongo_client.retrieve_all_tasks()
+        tasks = task_dao.retrieve_all_tasks()
         results = app_helper.convert_to_json(tasks)
     except Exception as e:
         return jsonify({"exception":str(e)}),404
@@ -21,7 +21,7 @@ def get_all_tasks():
 @app.route('/api/tasks/',methods=["POST"])
 def get_task_by_id():
     try:
-        task = mongo_client.retrieve_task(request.json)
+        task = task_dao.retrieve_task(request.json)
         result = JSONEncoder().encode(task)
         if(len(result)==0):
             return make_response(jsonify({"error":"Not Found"}),404)
@@ -35,7 +35,8 @@ def add_new_task():
     try:
         if not request.json:
             make_response(({"validation_error":"request error"},400))
-        insert_result = mongo_client.insert_db(request.json)
+        #check if resource already exists
+        insert_result = task_dao.insert_db(request.json)
     except Exception as e:
         return jsonify({"exception":str(e)}),404
     return jsonify({"response":insert_result+" created successfully"}),201
@@ -46,8 +47,7 @@ def delete_task():
     try:
         if len(request.json) == 0:
             return make_response(jsonify({"Error":"Please sp[ecify a task id"}),400)
-
-        result = mongo_client.delete_task(request.json)
+        result = task_dao.delete_task(request.json)
         if result == True:
             return jsonify({"success":"deleted"})
         else:
