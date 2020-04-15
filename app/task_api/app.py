@@ -7,6 +7,11 @@ from app_helper import app_helper
 #initialise app server
 app=Flask(__name__)
 
+@app.route('/api/',methods=["GET"])
+def get_service():
+    return jsonify({"response":"service up and running"}),200
+    print("service up and running")
+
 #Get all tasks
 @app.route('/api/tasks/',methods=["GET"])
 def get_all_tasks():
@@ -56,4 +61,4 @@ def delete_task():
         return jsonify({"exception":str(e)}),404
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000, threaded=True, host=('0.0.0.0'),debug=True)

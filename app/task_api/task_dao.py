@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 
-mongo_client = MongoClient('localhost',27017,serverSelectionTimeoutMS = 2000)
+mongo_client = MongoClient('db',27017,serverSelectionTimeoutMS = 2000)
 db = mongo_client['tasks']
 
 
@@ -12,7 +12,6 @@ def insert_db(task_data):
         return format(result.inserted_id)
     except Exception as e:
         raise e
-
     
 
 def retrieve_task(data):

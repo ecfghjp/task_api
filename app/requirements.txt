@@ -1,0 +1,6 @@
+#this file will have all the dependencies required for the project. 
+#At run time we will run pip3 install on these dependencies to install them into the container
+pymongo
+flask
+flask_restful
+requests

@@ -1,0 +1,9 @@
+FROM python
+COPY ./requirements.txt /
+COPY . /
+RUN apt-get update
+RUN apt-get install -y libzmq3-dev python3-pip 
+RUN pip3 install --upgrade pip --trusted-host pypi.org --trusted-host files.pythonhosted.org
+RUN  pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org pymongo
+RUN pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org  --user --no-cache-dir -r /requirements.txt
+CMD ["python3","task_api/app.py","--host", "0.0.0.0"]
