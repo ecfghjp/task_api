@@ -1,9 +1,8 @@
+import os
 from pymongo import MongoClient
 
-
-mongo_client = MongoClient('db',27017,serverSelectionTimeoutMS = 2000)
-db = mongo_client['tasks']
-
+mongo_client = MongoClient(host=os.environ['MONGODB_HOSTNAME'],port=27017,serverSelectionTimeoutMS = 2000)
+db = mongo_client[os.environ['MONGODB_DATABASE']]
 
 def insert_db(task_data):
     try:

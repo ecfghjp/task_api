@@ -3,6 +3,7 @@ import requests
 import task_dao
 from JSONEncoder import JSONEncoder
 from app_helper import app_helper
+import os
 
 #initialise app server
 app=Flask(__name__)
@@ -61,4 +62,7 @@ def delete_task():
         return jsonify({"exception":str(e)}),404
 
 if __name__ == '__main__':
-    app.run(port=5000, threaded=True, host=('0.0.0.0'),debug=True)
+    host_name=os.environ['APP_HOST']
+    port_value=os.environ['APP_PORT']
+    debug_value=os.environ['APP_DEBUG']
+    app.run(host=host_name,port=port_value,debug=debug_value,threaded=True)
