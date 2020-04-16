@@ -2,17 +2,25 @@
 
 A standard REST API in Python
 
-# Set up #
+# Set up Docker #
 
-Run following commands in Visual studio code console:
-pip3 install flask
-Pip3 install MongoClient
+Flask App in Python with Mongo DB Database
 
-Hit Run on console to run app.py
-The server will start on port 5000
+Make sure Docker is installed on your machine. Get Docker from : 
+https://www.docker.com/products/docker-desktop
+
+Once Docker is installed use "docker --version" to check if installation is complete
+
+Download the project and CD to the project directory
+
+Build project using - docker-compose build
+run api and docker container - docker-compose up
 
 To Test connectivity
-http://localhost:5000/api/tasks/ from browser, you should get JSON back
+http://localhost:5000/api/ from browser, you should get JSON back 
+{
+    "response": "service up and running"
+}
 
 # Test #
 
@@ -25,6 +33,8 @@ http://localhost:5000/api/tasks/ from browser, you should get JSON back
 **Unit Test and Integration test**
 
 **Folder structure and init.py file**
+
+**Security docker container for app and mongodb**
 
 
 
