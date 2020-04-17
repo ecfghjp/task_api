@@ -13,8 +13,9 @@ Once Docker is installed use "docker --version" to check if installation is comp
 
 Download the project and CD to the project directory
 
-Build project using - docker-compose build
-run api and docker container - docker-compose up
+Build project using - **docker-compose build.**
+
+Spin up the docker container - **docker-compose up**
 
 To Test connectivity hit following from your browser
 
@@ -23,8 +24,6 @@ http://localhost:5000/api/ from browser, you should get JSON back
 {
     "response": "service up and running"
 }
-
-# Test #
 
 # Future enhancements #
 
@@ -37,6 +36,8 @@ http://localhost:5000/api/ from browser, you should get JSON back
 **Folder structure and init.py file**
 
 **Security docker container for app and mongodb**
+
+**Microservice Architecture**
 
 
 
