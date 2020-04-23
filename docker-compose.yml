@@ -1,5 +1,9 @@
+#version of dockert-compose
 version: '3'
+# services within the docker-compose . In the given docker-compose 2 containers will be started.
+#One container for the app(application) ans second one for mongodb
 services:
+  # app is the folder name
   app:
     build: ./app
     environment:
@@ -11,6 +15,7 @@ services:
       MONGODB_HOSTNAME: db
     ports:
       - '5000:5000'
+    # depends_on will bind this container to the mongodb container
     depends_on:
       - db
   db:
@@ -26,5 +31,9 @@ services:
     #  - ./db/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     ports:
       - '27017:27017'
+    #mounts a local drive to the data folder and stores data in here. Even if we remove 
+    #image and rebuild it data will be restored from this volume
+    volumes:
+      - '/Users/abhishek.sharma/Documents/docker-volumes/db:/data/db'
     
   

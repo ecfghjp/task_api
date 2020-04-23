@@ -6,5 +6,5 @@ setup(name='Task API',
       url='http://github.com/ecfghjp/task_api',
       author='Ecfghjp',
       license='MIT',
-      packages=['docs'],
+      packages=['app/task_api'],
       zip_safe=False)

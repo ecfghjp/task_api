@@ -4,3 +4,4 @@ pymongo
 flask
 flask_restful
 requests
+pytest
