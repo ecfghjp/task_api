@@ -6,6 +6,7 @@ services:
   # app is the folder name
   app:
     build: ./app
+    #add volume for source code
     environment:
       APP_ENV: dev
       APP_HOST: 0.0.0.0
@@ -14,10 +15,27 @@ services:
       MONGODB_DATABASE: tasks
       MONGODB_HOSTNAME: db
     ports:
-      - '5000:5000'
+      - 5000:5000
     # depends_on will bind this container to the mongodb container
     depends_on:
       - db
+  #nginx configuration
+  #webserver:
+  #  build: ./webserver
+  #  ports: 
+  #    - 80:80
+  #  networks:
+  #    - my-network
+  #  depends_on:
+  #    - app
+    #It is VERY important that your config folder does NOT exist on your host first time you’re starting 
+    #the container. When you start your container through docker-compose, it will automatically create the folder 
+    #and populate it with the contents of the container
+    #volumes:
+    #  - ./webserver/nginx.conf:/etc/nginx/conf.d/default.conf
+    #  - '/Users/abhishek.sharma/Documents/docker-volumes/webserver:/etc/nginx'
+    #  - '/Users/abhishek.sharma/Documents/docker-volumes/certificates/webserver:/etc/ssl/private'
+  
   db:
     build: ./db
     restart: unless-stopped
@@ -33,7 +51,11 @@ services:
       - '27017:27017'
     #mounts a local drive to the data folder and stores data in here. Even if we remove 
     #image and rebuild it data will be restored from this volume
+    # We can make changes to mounted volumes on host system and then start the docker container 
     volumes:
       - '/Users/abhishek.sharma/Documents/docker-volumes/db:/data/db'
+  
+  
+  
     
   
